@@ -19,6 +19,9 @@ function getNumDogs () {
     fetch(`https://dog.ceo/api/breeds/image/random/${numDogs}`)
     .then(response => response.json())
     .then(response => displayImages(response));
+    if (numDogs > 1) {
+        $('#plural').html('NOW LOOK AT THESE DOGS!');
+    }
 }
 
 //fetch list from dog API
@@ -34,6 +37,7 @@ function getList() {
 function listSelection() {
     $('#breed-button').on('click', function() {
         let breed = $('#breeds').val();
+        $('#section').removeClass('hidden');
         fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
         .then(response => response.json())
         .then(response => displayBreed(response))
@@ -53,10 +57,9 @@ function populateList(response) {
 
 //display the requested number of random images
 function displayImages(response) {
-    console.log(response.message)
     let string = ''
     for (let i = 0; i < response.message.length; i++) {
-        let pic = (`<img src="${response.message[i]}" class="results-img">`
+        let pic = (`<img id="dogpic" src="${response.message[i]}" class="results-img">`
         ) 
         $('.results').removeClass('hidden');
         string = string.concat(pic)
@@ -64,12 +67,19 @@ function displayImages(response) {
 }
 
 function displayBreed(response) {
-    let breedpic = (`<img src="${response.message}" class="results-img">`
+    let breedpic = (`<img id="dogpic" src="${response.message}" class="results-img">`
     )
-    $('.results').removeClass('hidden');
-    console.log(breedpic)
-    $('#section').html(breedpic);
+    $('#section').removeClass('hidden');
+    // console.log(breedpic)
+    $('.results-img').html(breedpic);
 }
+
+// function removePics() {
+//     let pics = $('#section').find('#dogpic');
+//     $('#numInput').on('click', function () {
+//         $(pics).remove();
+//     })
+// }
 
 $(function() {
     fetchClick();
