@@ -29,10 +29,6 @@ function getNumDogs () {
     }
 }
 
-function numWatcher() {
-    $('#numInput').keydown()
-}
-
 //fetch list from dog API
 function getList() {
     $('#breeds').on('click', function () {
@@ -60,21 +56,12 @@ function listSelection() {
     });
 }
 
-// function blankClick() {
-//     $('#breed-button').on('click', function() {
-//         let breed = $('#breeds').val();
-//         console.log(breed);
-//                 if (breed === '-- Select breed --') {
-//             $('#breedError').removeClass('hidden');
-//         } 
-//     })
-// }
-
 function blankClick() {
     $('#breed-button').on('click', function() {
         let breed = $('#breeds').val();
-        if (breed === '-- Select breed --') {
-            $('#breedError').removeClass('hidden')
+        console.log(breed);
+                if (breed === '-- Select breed --') {
+            $('#breedError').removeClass('hidden');
         } 
     })
 }
