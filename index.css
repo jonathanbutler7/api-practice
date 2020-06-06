@@ -21,6 +21,7 @@ body {
     max-width: 500px;
     margin: 30px auto 0 auto;
     background-color: white;
+    box-shadow: 0 5px 15px -5px rgba(0,0,0,1);
 }
 
 input, select {
