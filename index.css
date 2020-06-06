@@ -1,9 +1,11 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
+    color: dimgray;
 }
 
 .container {
     border: 2px gray solid;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -13,7 +15,27 @@ input {
     display: block;
     width: 100px;
     margin: 10px auto 10px auto;
+    box-shadow: 0 5px 15px -5px rgba(0,0,0,1);
+    border: black 1px solid;
+    border-radius: 5px;
+}
 
+h3 {
+    margin: 10px auto 10px auto;
+}
+
+#button, #breed-button {
+    color: white;
+    background-color: dimgray;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px -5px rgba(0,0,0,1);
+}
+
+#button:hover, #breed-button:hover {
+    color: dimgray;
+    background-color: gainsboro;
 }
 
 .hidden {
@@ -25,5 +47,6 @@ input {
     display: flex;
     flex-direction: column;
     margin: 5px;
+    box-shadow: 0 5px 15px -5px rgba(0,0,0,1);
 }
 
