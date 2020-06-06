@@ -37,6 +37,10 @@ h3 {
     margin: 10px auto 10px auto;
 }
 
+p {
+    color: red;
+}
+
 #button, #breed-button {
     color: white;
     background-color: dimgray;

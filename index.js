@@ -16,12 +16,21 @@ function fetchClick() {
 //take user's number input, place in url, and fetch that many images
 function getNumDogs () {
     const numDogs = $('#numInput').val();
-    fetch(`https://dog.ceo/api/breeds/image/random/${numDogs}`)
-    .then(response => response.json())
-    .then(response => displayImages(response));
-    if (numDogs > 1) {
-        $('#plural').html('NOW LOOK AT THESE DOGS!');
+    if (numDogs >= 1 && numDogs <= 50) {
+        fetch(`https://dog.ceo/api/breeds/image/random/${numDogs}`)
+        .then(response => response.json())
+        .then(response => displayImages(response));
+        if (numDogs > 1) {
+            $('#plural').html('NOW LOOK AT THESE DOGS!');
+            $('#numError').addClass('hidden');
+        }
+    } else {
+        $('#numError').removeClass('hidden');
     }
+}
+
+function numWatcher() {
+    $('#numInput').keydown()
 }
 
 //fetch list from dog API
@@ -37,11 +46,16 @@ function getList() {
 function listSelection() {
     $('#breed-button').on('click', function() {
         let breed = $('#breeds').val();
-        $('#section').removeClass('hidden');
-        fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
-        .then(response => response.json())
-        .then(response => displayBreed(response))
-        .catch(error => alert('Something went wrong, please try again later.'))
+        if (breed === "-- Select breed --") {
+            $('#breedError').removeClass('hidden')
+        } else {
+            $('#section').removeClass('hidden');
+            $('#breedError').addClass('hidden')
+            fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+                .then(response => response.json())
+                .then(response => displayBreed(response))
+                .catch(error => alert('Something went wrong, please try again later.'))
+        }
     });
 }
 
@@ -74,6 +88,15 @@ function displayBreed(response) {
     $('.results-img').html(breedpic);
 }
 
+function listenToSelectBreed() {
+    $('#breeds').on('change', function() {
+        $('#section').addClass('hidden');
+    })
+    $('#numInput').change(function() {
+        $('#section').addClass('hidden');
+    })
+}
+
 // function removePics() {
 //     let pics = $('#section').find('#dogpic');
 //     $('#numInput').on('click', function () {
@@ -84,4 +107,5 @@ function displayBreed(response) {
 $(function() {
     fetchClick();
     getList();
+    listenToSelectBreed();
 })
