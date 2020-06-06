@@ -60,10 +60,20 @@ function listSelection() {
     });
 }
 
+// function blankClick() {
+//     $('#breed-button').on('click', function() {
+//         let breed = $('#breeds').val();
+//         console.log(breed);
+//                 if (breed === '-- Select breed --') {
+//             $('#breedError').removeClass('hidden');
+//         } 
+//     })
+// }
+
 function blankClick() {
     $('#breed-button').on('click', function() {
         let breed = $('#breeds').val();
-        if (breed === null) {
+        if (breed === '-- Select breed --') {
             $('#breedError').removeClass('hidden')
         } 
     })
@@ -101,21 +111,17 @@ function displayBreed(response) {
 function listenToSelectBreed() {
     $('#breeds').on('change', function() {
         $('#section').addClass('hidden');
+        $('#breedError').addClass('hidden');
     })
     $('#numInput').change(function() {
         $('#section').addClass('hidden');
+        $('#numError').addClass('hidden');
     })
 }
-
-// function removePics() {
-//     let pics = $('#section').find('#dogpic');
-//     $('#numInput').on('click', function () {
-//         $(pics).remove();
-//     })
-// }
 
 $(function() {
     fetchClick();
     getList();
     listenToSelectBreed();
+    blankClick();
 })
