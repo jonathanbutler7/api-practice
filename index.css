@@ -3,6 +3,14 @@
     color: dimgray;
 }
 
+body {
+    background-image: url(images/lots-of-dogs.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2500px;
+    background-position-y: inherit;
+}
+
 .container {
     border: 2px gray solid;
     border-radius: 5px;
@@ -12,6 +20,7 @@
     padding-bottom: 15px;
     max-width: 500px;
     margin: 30px auto 0 auto;
+    background-color: white;
 }
 
 input, select {
