@@ -46,6 +46,7 @@ function getList() {
 function listSelection() {
     $('#breed-button').on('click', function() {
         let breed = $('#breeds').val();
+        console.log(breed)
         if (breed === "-- Select breed --") {
             $('#breedError').removeClass('hidden')
         } else {
@@ -57,6 +58,15 @@ function listSelection() {
                 .catch(error => alert('Something went wrong, please try again later.'))
         }
     });
+}
+
+function blankClick() {
+    $('#breed-button').on('click', function() {
+        let breed = $('#breeds').val();
+        if (breed === null) {
+            $('#breedError').removeClass('hidden')
+        } 
+    })
 }
 
 //fetch list of breeds contained in object, convert to array, populate dropdown list

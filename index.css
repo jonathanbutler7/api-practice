@@ -26,7 +26,8 @@ body {
 
 input, select {
     display: block;
-    width: 100px;
+    width: 150px;
+    height: 20px;
     margin: 20px auto 20px auto;
     box-shadow: 0 5px 15px -5px rgba(0,0,0,1);
     border: black 1px solid;
